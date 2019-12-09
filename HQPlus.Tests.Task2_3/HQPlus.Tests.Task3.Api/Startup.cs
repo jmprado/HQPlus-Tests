@@ -29,7 +29,11 @@ namespace HQPlus.Tests.Task3.Api
 
             var filePath = Path.Combine(folder, fileName);
 
-
+            // Serviço Swagger Docs
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BRT Consult@i Rest Service", Version = "v1" });
+            });
 
             services.AddTransient<IRatesFilterOperation>(provider => new RatesFilterOperation(filePath));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
