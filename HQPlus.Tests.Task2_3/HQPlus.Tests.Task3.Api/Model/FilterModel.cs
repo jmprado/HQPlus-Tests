@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using HQPlus.Tests.Task3.Api.Validators;
 
 namespace HQPlus.Tests.Task3.Api.Model
 {
@@ -13,11 +15,12 @@ namespace HQPlus.Tests.Task3.Api.Model
         /// <summary>
         /// DateTime to filter arrival date
         /// </summary>
-        public DateTime ArrivalDate { get; set; }
-        
+        public DateTime? ArrivalDate { get; set; }
+
         /// <summary>
         /// Filter operator with default value "="
         /// </summary>
-        public string Operator { get; set; } = "=";
+        [StringRange(AllowableValues = new[] { "=", ">", "<", ">=", "<=" }, ErrorMessage = "Invalid operator use one of  [=, <, >, <=, >=].")]
+        public string? Operator { get; set; } = "=";
     }
 }

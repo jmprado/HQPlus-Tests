@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using HQPlus.Tests.Task3.RatesFilter;
 using System.IO;
+using Microsoft.Extensions.Hosting;
+using AutoWrapper;
 
 namespace HQPlus.Tests.Task3.Api
 {
@@ -37,7 +33,7 @@ namespace HQPlus.Tests.Task3.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +45,7 @@ namespace HQPlus.Tests.Task3.Api
                 app.UseHsts();
             }
 
+            app.UseApiResponseAndExceptionWrapper();
             app.UseHttpsRedirection();
             app.UseMvc();
         }

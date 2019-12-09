@@ -9,16 +9,22 @@ namespace HQPlus.Tests.Task2.ExcelGenerator
 {
     public class HotelRatesToExcel : IHotelRatesToExcel
     {
+        private readonly string _jsonFilePath;
+
+        public HotelRatesToExcel(string jsonFilePath)
+        {
+            _jsonFilePath = jsonFilePath;
+        }
+
         public async Task<string> GenerateExcelReport(string jsonFilePath)
         {
-            var jsonString = await ReadHotelRatesJson(jsonFilePath);
-
             var options = new JsonSerializerOptions
             {
                 AllowTrailingCommas = true
             };
 
-            var hotelRates = JsonSerializer.Deserialize<HotelRates>(jsonString, options);
+            var jsonContent = await ReadHotelRatesJson(_jsonFilePath);
+            var hotelRates = JsonSerializer.Deserialize<HotelRates>(jsonContent, options);
 
             var hotelName = hotelRates.hotel.name;
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HQPlus.Tests.Task3.RatesFilter
 {
-    public interface IRatesFilter
+    public interface IRatesFilterOperation
     {
         /// <summary>
         /// Filter the Hotel Rates by IdHotel
