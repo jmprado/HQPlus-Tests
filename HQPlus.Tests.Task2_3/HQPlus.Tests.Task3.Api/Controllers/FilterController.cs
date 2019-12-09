@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using HQPlus.Tests.Task3.RatesFilter;
 using HQPlus.Tests.Task3.Api.Model;
+using Microsoft.AspNetCore.Http;
+using HQPlus.Tests.Task2.Model;
+using System.Collections.Generic;
 
 namespace HQPlus.Tests.Task3.Api.Controllers
 {
@@ -16,9 +18,18 @@ namespace HQPlus.Tests.Task3.Api.Controllers
             _ratesFilterOperation = ratesFilterOperation;
         }
 
-        // GET api/values
+        /// <summary>
+        /// Load hotelrates.json and filter it contents
+        /// </summary>
+        /// <param name="filterModel"></param>
+        /// <returns>IEnumerable<HotelRates></returns>
         [HttpGet]
-        public async Task<IActionResult> Get([FromBody]FilterModel filterModel)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [Consumes("application/json")]
+        [Produces(typeof(List<HotelRates>))]
+        public IActionResult Get([FromBody]FilterModel filterModel)
         {
             if (ModelState.IsValid)
             {
@@ -28,14 +39,7 @@ namespace HQPlus.Tests.Task3.Api.Controllers
                 return new OkObjectResult(_ratesFilterOperation.Filter(filterModel.HotelId, filterModel.ArrivalDate.Value, filterModel.Operator));
             }
 
-            return new BadRequestObjectResult("");
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
+            return BadRequest();
         }
     }
 }

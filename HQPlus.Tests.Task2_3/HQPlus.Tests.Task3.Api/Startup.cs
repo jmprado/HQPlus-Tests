@@ -8,6 +8,7 @@ using HQPlus.Tests.Task3.RatesFilter;
 using System.IO;
 using Microsoft.Extensions.Hosting;
 using AutoWrapper;
+using Swashbuckle.Swagger;
 
 namespace HQPlus.Tests.Task3.Api
 {
@@ -27,6 +28,8 @@ namespace HQPlus.Tests.Task3.Api
             string fileName = "task 3 - hotelrates.json";
 
             var filePath = Path.Combine(folder, fileName);
+
+
 
             services.AddTransient<IRatesFilterOperation>(provider => new RatesFilterOperation(filePath));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
