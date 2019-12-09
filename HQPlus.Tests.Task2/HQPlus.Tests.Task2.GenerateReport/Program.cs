@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
+using HQPlus.Tests.Task2.ExcelGenerator;
 
 namespace HQPlus.Tests.Task2.GenerateReport
 {
@@ -8,12 +9,6 @@ namespace HQPlus.Tests.Task2.GenerateReport
     {
         static void Main(string[] args)
         {
-            var serviceProvider = new ServiceCollection()
-                        .AddLogging()
-                        .AddSingleton<IFooService, FooService>()
-                        .BuildServiceProvider();
-
-
             Console.WriteLine("/*-------------------------------------------------*/");
             Console.WriteLine("/*      HQ Plus Selection Tests By Joao Prado      */");
             Console.WriteLine("/*   Task 2 - Generate Excel From JSON From File   */");
@@ -26,10 +21,10 @@ namespace HQPlus.Tests.Task2.GenerateReport
 
             string filePath = Path.Combine(folder, fileName);
 
+            var reportGenerator = new ExcelGenerator.HotelRatesToExcel();
+            reportGenerator.GenerateExcelReport(filePath).GetAwaiter().GetResult();
 
-
-
-
+            Console.ReadLine();
         }
     }
 }

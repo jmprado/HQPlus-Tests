@@ -22,7 +22,7 @@ namespace HQPlus.Tests.Task2.ExcelGenerator
 
             var hotelName = hotelRates.hotel.name;
 
-            var fontColor = "#B3C2D6";
+            var fontColor = "#628fbc";
             using (var workbook = new XLWorkbook())
             {
                 var worksheet = workbook.AddWorksheet(hotelName);
@@ -44,8 +44,8 @@ namespace HQPlus.Tests.Task2.ExcelGenerator
                     worksheet.Row(i).Style.Fill.BackgroundColor = XLColor.FromHtml(bgColor);
                     worksheet.Row(i).Style.Font.FontColor = XLColor.FromHtml(fontColor);
 
-                    worksheet.Row(i).Cell(1).SetValue($"{rate.targetDay:dd.mm.yyyy}");
-                    worksheet.Row(i).Cell(2).SetValue($"{rate.targetDay.AddDays(rate.los):dd.mm.yyyy}");
+                    worksheet.Row(i).Cell(1).SetValue($"{rate.targetDay:dd.MM.yyyy}");
+                    worksheet.Row(i).Cell(2).SetValue($"{rate.targetDay.AddDays(rate.los):dd.MM.yyyy}");
                     worksheet.Row(i).Cell(3).SetValue($"{rate.price.numericFloat:N2}");
                     worksheet.Row(i).Cell(4).SetValue(rate.price.currency);
                     worksheet.Row(i).Cell(5).SetValue(rate.rateName);
@@ -55,8 +55,10 @@ namespace HQPlus.Tests.Task2.ExcelGenerator
                     i++;
                 }
 
+                worksheet.RangeUsed().Style.Font.FontSize = 12;
+                worksheet.RangeUsed().SetAutoFilter();
                 worksheet.Columns().AdjustToContents();
-                workbook.SaveAs("./output/report.xslx");
+                workbook.SaveAs("./output/report.xlsx");
             }
 
             return "";
