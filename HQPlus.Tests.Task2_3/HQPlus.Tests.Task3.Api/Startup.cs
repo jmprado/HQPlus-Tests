@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using HQPlus.Tests.Task3.RatesFilter;
+using System.IO;
 
 namespace HQPlus.Tests.Task3.Api
 {
@@ -25,7 +27,13 @@ namespace HQPlus.Tests.Task3.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            string folder = Directory.GetCurrentDirectory();
+            string fileName = "task 3 - hotelrates.json";
+
+            var filePath = Path.Combine(folder, fileName);
+
+            services.AddTransient<IRatesFilterOperation>(provider => new RatesFilterOperation(filePath));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

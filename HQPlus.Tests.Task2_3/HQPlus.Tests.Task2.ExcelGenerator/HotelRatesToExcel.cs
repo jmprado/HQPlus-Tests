@@ -9,9 +9,9 @@ namespace HQPlus.Tests.Task2.ExcelGenerator
 {
     public class HotelRatesToExcel : IHotelRatesToExcel
     {
-        public async Task<string> GenerateExcelReport(string filePath)
+        public async Task<string> GenerateExcelReport(string jsonFilePath)
         {
-            var jsonString = await ReadHotelRatesJson(filePath);
+            var jsonString = await ReadHotelRatesJson(jsonFilePath);
 
             var options = new JsonSerializerOptions
             {

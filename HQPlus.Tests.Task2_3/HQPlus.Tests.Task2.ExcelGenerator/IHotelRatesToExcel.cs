@@ -10,6 +10,6 @@ namespace HQPlus.Tests.Task2.ExcelGenerator
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        Task<string> GenerateExcelReport(string filePath);
+        Task<string> GenerateExcelReport(string jsonFilePath);
     }
 }

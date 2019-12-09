@@ -8,6 +8,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HQPlus.Tests.Task2.Generate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HQPlus.Tests.Task2.Model", "HQPlus.Tests.Task2.Model\HQPlus.Tests.Task2.Model.csproj", "{D24E0023-E1C7-4581-ACDB-B1CD1913EBBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQPlus.Tests.Task3.Api", "HQPlus.Tests.Task3.Api\HQPlus.Tests.Task3.Api.csproj", "{48B9CB62-0B57-49FE-A6C0-FEDBBA5C9355}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HQPlus.Tests.Task3.RatesFilter", "HQPlus.Tests.Task3.RatesFilter\HQPlus.Tests.Task3.RatesFilter.csproj", "{47FD1C2E-FDA1-4068-9A91-EAC554ED7D56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{D24E0023-E1C7-4581-ACDB-B1CD1913EBBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D24E0023-E1C7-4581-ACDB-B1CD1913EBBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D24E0023-E1C7-4581-ACDB-B1CD1913EBBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B9CB62-0B57-49FE-A6C0-FEDBBA5C9355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B9CB62-0B57-49FE-A6C0-FEDBBA5C9355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B9CB62-0B57-49FE-A6C0-FEDBBA5C9355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B9CB62-0B57-49FE-A6C0-FEDBBA5C9355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FD1C2E-FDA1-4068-9A91-EAC554ED7D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FD1C2E-FDA1-4068-9A91-EAC554ED7D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FD1C2E-FDA1-4068-9A91-EAC554ED7D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FD1C2E-FDA1-4068-9A91-EAC554ED7D56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
