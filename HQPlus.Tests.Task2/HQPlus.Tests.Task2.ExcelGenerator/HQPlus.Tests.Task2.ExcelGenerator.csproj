@@ -3,11 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\HQPlus.Tests.Task2\HQPlus.Tests.Task2.Model.csproj" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.94.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HQPlus.Tests.Task2.Model\HQPlus.Tests.Task2.Model.csproj" />
   </ItemGroup>
 </Project>

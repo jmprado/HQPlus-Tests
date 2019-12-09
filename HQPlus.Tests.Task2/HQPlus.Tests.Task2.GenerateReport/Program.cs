@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using HQPlus.Tests.Task2.ExcelGenerator;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HQPlus.Tests.Task2.GenerateReport
@@ -9,10 +10,8 @@ namespace HQPlus.Tests.Task2.GenerateReport
         static void Main(string[] args)
         {
             var serviceProvider = new ServiceCollection()
-                        .AddLogging()
-                        .AddSingleton<IFooService, FooService>()
+                        .AddSingleton<IHotelRatesToExcel, HotelRatesToExcel>()
                         .BuildServiceProvider();
-
 
             Console.WriteLine("/*-------------------------------------------------*/");
             Console.WriteLine("/*      HQ Plus Selection Tests By Joao Prado      */");
@@ -26,10 +25,15 @@ namespace HQPlus.Tests.Task2.GenerateReport
 
             string filePath = Path.Combine(folder, fileName);
 
+            Console.WriteLine("Instatiating Report Service.");
+            var hotelRatesToExcel = serviceProvider.GetService<IHotelRatesToExcel>();
 
+            Console.WriteLine("Creating report file");
+            hotelRatesToExcel.GenerateExcelReport(filePath).GetAwaiter().GetResult();
 
-
-
+            Console.WriteLine($"Report file created at \r\n{folder}/output/");
+            Console.WriteLine("End processing, press any key to exit.");
+            Console.ReadLine();
         }
     }
 }
