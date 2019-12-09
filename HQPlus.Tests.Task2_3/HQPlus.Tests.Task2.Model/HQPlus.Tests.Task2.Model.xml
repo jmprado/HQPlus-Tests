@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HQPlus.Tests.Task2.Model</name>
+    </assembly>
+    <members>
+        <member name="T:HQPlus.Tests.Task2.Model.Hotel">
+            <summary>
+            Hotel class
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.Hotel.hotelID">
+            <summary>
+            Id of hotel
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.Hotel.classification">
+            <summary>
+            Classification of hotel
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.Hotel.name">
+            <summary>
+            Name of hotel
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.Hotel.reviewscore">
+            <summary>
+            Review score from reviwers
+            </summary>
+        </member>
+        <member name="T:HQPlus.Tests.Task2.Model.HotelRate">
+            <summary>
+            Individual room hotel rate
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.adults">
+            <summary>
+            Number of adults per room
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.los">
+            <summary>
+            Length of stay (number of days)
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.price">
+            <summary>
+            Price class
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.rateDescription">
+            <summary>
+            Description of rate
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.rateID">
+            <summary>
+            Rate Id
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.rateName">
+            <summary>
+            Rate name
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.rateTags">
+            <summary>
+            List of rate tags (e.g. Breakfast)
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRate.targetDay">
+            <summary>
+            Date of arrival
+            </summary>
+        </member>
+        <member name="T:HQPlus.Tests.Task2.Model.HotelRates">
+            <summary>
+            Root class for reading hoterates.json file
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRates.hotel">
+            <summary>
+            Hotel class
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.HotelRates.hotelRates">
+            <summary>
+            Hotel rates
+            </summary>
+        </member>
+        <member name="T:HQPlus.Tests.Task2.Model.Price">
+            <summary>
+            Price class
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.Price.currency">
+            <summary>
+            Currency used in rate
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.Price.numericFloat">
+            <summary>
+            Float value of price
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.Price.numericInteger">
+            <summary>
+            Integer representing price
+            </summary>
+        </member>
+        <member name="T:HQPlus.Tests.Task2.Model.RateTag">
+            <summary>
+            Rate tag class
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.RateTag.name">
+            <summary>
+            Name of tag (e.g. Breakfast)
+            </summary>
+        </member>
+        <member name="P:HQPlus.Tests.Task2.Model.RateTag.shape">
+            <summary>
+            Boolean representing if the tag is available
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\temp\hqplus\HQPlus-Tests\HQPlus.Tests.Task2_3\HQPlus.Tests.Task2.Model\HQPlus.Tests.Task2.Model.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="HQPlus.Tests.Task2.Model.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
