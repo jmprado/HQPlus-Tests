@@ -1,21 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HQPlus.Tests.Task3.RatesFilter;
-using HQPlus.Tests.Task3.Api.Model;
+using HQPlus.Tests.Task3.RestApi.Model;
 using Microsoft.AspNetCore.Http;
 using HQPlus.Tests.Task2.Model;
 using System.Collections.Generic;
+using System.IO;
 
-namespace HQPlus.Tests.Task3.Api.Controllers
+namespace HQPlus.Tests.Task3.RestApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("v1/[controller]")]
     [ApiController]
-    public class FilterController : ControllerBase
+    public class FilterFromFileController : ControllerBase
     {
         private readonly IRatesFilterOperation _ratesFilterOperation;
 
-        public FilterController(IRatesFilterOperation ratesFilterOperation)
+        public FilterFromFileController()
         {
-            _ratesFilterOperation = ratesFilterOperation;
+            string webRootPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            string folder = Path.Combine(webRootPath, "wwwroot/json");
+            string fileName = "task3.json";
+
+            _ratesFilterOperation = new RatesFilterOperation(folder, fileName);
         }
 
         /// <summary>
@@ -33,10 +39,8 @@ namespace HQPlus.Tests.Task3.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!filterModel.ArrivalDate.HasValue)
-                    return new OkObjectResult(_ratesFilterOperation.Filter(filterModel.HotelId));
-
-                return new OkObjectResult(_ratesFilterOperation.Filter(filterModel.HotelId, filterModel.ArrivalDate.Value, filterModel.Operator));
+                var filterResult = _ratesFilterOperation.Filter(filterModel.HotelId, filterModel.ArrivalDate.Value, filterModel.Operator);
+                return new OkObjectResult(filterResult);
             }
 
             return BadRequest();

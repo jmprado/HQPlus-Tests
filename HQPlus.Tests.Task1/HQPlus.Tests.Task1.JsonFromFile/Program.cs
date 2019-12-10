@@ -16,7 +16,7 @@ namespace HQPlus.Tests.Task1.DoJsonExtraction
             Console.WriteLine();
             Console.WriteLine();
 
-            string folder = Directory.GetCurrentDirectory(); ;
+            string folder = Directory.GetCurrentDirectory();
             string fileName = "task1.html";
 
             var htmlExtractorFromFile = new HtmlExtractor(folder, fileName);

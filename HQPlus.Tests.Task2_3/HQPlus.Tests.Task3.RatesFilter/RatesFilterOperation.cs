@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Linq;
-using System.Linq.Dynamic.Core;
 using HQPlus.Tests.Task2.Model;
 
 namespace HQPlus.Tests.Task3.RatesFilter
@@ -11,37 +10,86 @@ namespace HQPlus.Tests.Task3.RatesFilter
     public class RatesFilterOperation : IRatesFilterOperation
     {
         private readonly string _jsonFilePath;
+        private readonly IEnumerable<HotelRates> _hotelRates;
 
-        public RatesFilterOperation(string jsonFilePath)
+        /// <summary>
+        /// Initialize rates filter operation for file load
+        /// </summary>
+        /// <param name="jsonPath">Folder where file resided</param>
+        /// <param name="jsonFile">JSON file name</param>
+        public RatesFilterOperation(string jsonPath, string jsonFile)
         {
-            _jsonFilePath = jsonFilePath;
+            _hotelRates = Loader.LoadJson(jsonPath, jsonFile);
         }
 
-        public IEnumerable<HotelRates> Filter(int hotelId)
+        /// <summary>
+        /// Initialize rates filter operation for stream load
+        /// </summary>
+        /// <param name="jsonStream">JSON stream</param>
+        public RatesFilterOperation(Stream jsonStream)
         {
-            var rates = GetHotelRatesFromJsonFile();
-            return (from c in rates where c.hotel.hotelID == hotelId select c).ToList();
+            _hotelRates = Loader.LoadJson(jsonStream);
         }
 
-        public IEnumerable<HotelRates> Filter(int hotelId, DateTime arrivalDate, string filterOperator)
+
+        /// <summary>
+        /// Initialize rates filter operation for string load
+        /// </summary>
+        /// <param name="jsonString">JSON string</param>
+        public RatesFilterOperation(string jsonString)
         {
-            var rates = GetHotelRatesFromJsonFile().AsQueryable();
-            var hotelFiltered = rates.Where("hotel.hotelId == @0", hotelId);
-            var ratesFiltered = hotelFiltered.Where($"hotelRates {filterOperator} @0", arrivalDate);
-            return ratesFiltered;
+            _hotelRates = Loader.LoadJson(jsonString);
         }
 
-        private IEnumerable<HotelRates> GetHotelRatesFromJsonFile()
+        /// <summary>
+        /// Initialize rates filter operation for IEnumerable<HotelRates> Object
+        /// </summary>
+        /// <param name="hotelRates">IEnumerable HotelRates object</param>
+        public RatesFilterOperation(IEnumerable<HotelRates> hotelRates)
         {
-            var jsonContent = File.ReadAllText(_jsonFilePath);
+            _hotelRates = hotelRates;
+        }
 
-            var options = new JsonSerializerOptions
+
+        public HotelRates Filter(int hotelId, DateTime? arrivalDate, string filterOperator)
+        {
+            if (!arrivalDate.HasValue)
+                return (from c in _hotelRates where c.hotel.hotelID == hotelId select c).FirstOrDefault();
+
+            var hotel = (from c in _hotelRates where c.hotel.hotelID == hotelId select c).FirstOrDefault();
+            var ratesFiltered = new List<HotelRate>();
+
+            TimeSpan timeInitDay = new TimeSpan(0, 0, 0, 0);
+            TimeSpan timeEndDay = new TimeSpan(0, 23, 59, 59);
+
+            DateTime dateInit = arrivalDate.Value.Add(timeInitDay);
+            DateTime dateEnd = arrivalDate.Value.Add(timeEndDay);
+
+            if (hotel != null)
             {
-                AllowTrailingCommas = true
-            };
+                var ratesToFilter = hotel.hotelRates;
 
-            var hotelRates = JsonSerializer.Deserialize<IEnumerable<HotelRates>>(jsonContent, options);
-            return hotelRates;
+                ratesFiltered = filterOperator switch
+                {
+                    "=" => (from c in ratesToFilter where c.targetDay >= dateInit && c.targetDay <= dateEnd select c).ToList(),
+                    "<" => (from c in ratesToFilter where c.targetDay < dateInit select c).ToList(),
+                    "<=" => (from c in ratesToFilter where c.targetDay <= dateInit select c).ToList(),
+                    ">" => (from c in ratesToFilter where c.targetDay > dateEnd select c).ToList(),
+                    ">=" => (from c in ratesToFilter where c.targetDay >= dateEnd select c).ToList(),
+                    _ => ratesToFilter,
+                };
+
+                var hotelReturn = new HotelRates
+                {
+                    hotel = hotel.hotel,
+                    hotelRates = ratesFiltered
+                };
+
+                return hotelReturn;
+            }
+
+            return null;
         }
+
     }
 }

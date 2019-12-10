@@ -8,13 +8,6 @@ namespace HQPlus.Tests.Task3.RatesFilter
     public interface IRatesFilterOperation
     {
         /// <summary>
-        /// Filter the Hotel Rates by IdHotel
-        /// </summary>
-        /// <param name="hotelId">integer representing the hotel id to get all rates</param>
-        /// <returns>HotelRates</returns>
-        IEnumerable<HotelRates> Filter(int hotelId);
-
-        /// <summary>
         /// Filter the Hotel Rates by IdHotel, ArrivalDate and operator to be applied
         /// to arrival date parameter
         /// </summary>
@@ -22,6 +15,6 @@ namespace HQPlus.Tests.Task3.RatesFilter
         /// <param name="arrivalDate">date to be filtered with filterOperator parameter</param>
         /// <param name="filterOperator">Possible values: [=, <, >, <=, >=] </param>
         /// <returns></returns>
-        IEnumerable<HotelRates> Filter(int hotelId, DateTime arrivalDate, string filterOperator);
+        HotelRates Filter(int hotelId, DateTime? arrivalDate, string filterOperator);
     }
 }

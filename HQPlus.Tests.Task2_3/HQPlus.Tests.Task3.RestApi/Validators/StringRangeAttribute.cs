@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace HQPlus.Tests.Task3.Api.Validators
+namespace HQPlus.Tests.Task3.RestApi.Validators
 {
     public class StringRangeAttribute : ValidationAttribute
     {

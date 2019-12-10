@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using HQPlus.Tests.Task3.Api.Validators;
+using HQPlus.Tests.Task3.RestApi.Validators;
+using ExpressiveAnnotations.Attributes;
 
-namespace HQPlus.Tests.Task3.Api.Model
+namespace HQPlus.Tests.Task3.RestApi.Model
 {
     public class FilterModel
     {
@@ -10,6 +11,7 @@ namespace HQPlus.Tests.Task3.Api.Model
         /// <summary>
         /// HotelId
         /// </summary>
+        [Required(ErrorMessage = "Hotel Id required")]
         public int HotelId { get; set; }
 
         /// <summary>
@@ -20,7 +22,8 @@ namespace HQPlus.Tests.Task3.Api.Model
         /// <summary>
         /// Filter operator with default value "="
         /// </summary>
+        [RequiredIf("ArrivalDate != null", ErrorMessage = "Operator required if ArrivalDate is present.")]
         [StringRange(AllowableValues = new[] { "=", ">", "<", ">=", "<=" }, ErrorMessage = "Invalid operator use one of  [=, <, >, <=, >=].")]
-        public string? Operator { get; set; } = "=";
+        public string Operator { get; set; } = "=";
     }
 }

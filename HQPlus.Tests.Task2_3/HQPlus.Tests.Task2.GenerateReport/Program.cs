@@ -2,7 +2,6 @@
 using System.IO;
 using HQPlus.Tests.Task2.ExcelGenerator;
 using Microsoft.Extensions.DependencyInjection;
-using HQPlus.Tests.Task2.ExcelGenerator;
 
 namespace HQPlus.Tests.Task2.GenerateReport
 {
