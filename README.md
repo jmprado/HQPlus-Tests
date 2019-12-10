@@ -5,12 +5,11 @@ It's a console app who reads the HTML file and generate the JSON and show the re
 
 Also there's a test project for assure the values returned by HTML extraction.
 
-## Task 2 - 
-### Excel report generation
-There's a console app who reads the JSON and generate the excel file at [runtime folder]./output/report_[hotel id].json
+## Task 2a - Excel report generation
+There's a console app who reads the JSON and generate the excel file at [runtime folder]./output/report_[hotel id].xlsx
 
 
-## Task 2 
+## Task 2b 
 ### Optional - Architecture Suggestion - Email is sent at time x attaching the report
 #### Option 1 - Hangfire Cron Job
 -------------------------------------------------------------------------------------------------------
