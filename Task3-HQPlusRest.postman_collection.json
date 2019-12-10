@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "ff35267c-6724-4dac-9dc6-65056a3ca09c",
+		"name": "HQPlusRest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Filter Rates From File",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"hotelId\": 7294,\n\t\"arrivalDate\": \"2016-03-17\",\n\t\"operator\": \"=\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/filterfromfile",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"filterfromfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter Rates From Stream",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"hotelId\": 7294,\n\t\"arrivalDate\": \"2016-03-17\",\n\t\"operator\": \"=\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/filterfromstream",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"filterfromstream"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter Rates From String",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"hotelId\": 7294,\n\t\"arrivalDate\": \"2016-03-17\",\n\t\"operator\": \"=\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/v1/filterfromstring",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"v1",
+						"filterfromstring"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
