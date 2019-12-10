@@ -1,5 +1,11 @@
 # HQ Plus Tests
 
+## Task 1 Optional - Architecture Suggestion
+It's a console app who reads the HTML file and generate the JSON at [runtime folder]/output/report_[hotelId].json.
+
+Also there's a test project for assure the values returned by HTML extraction.
+
+
 ## Task 2 Optional - Architecture Suggestion
 
 #### Email is sent at time x attaching the report
