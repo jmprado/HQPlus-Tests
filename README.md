@@ -21,7 +21,7 @@ When generate the excel report file send a message to one of the queue services 
 or job who will prepare and send the email.
 
 ## Task 3 - Api Json 
-There's a postman collection with the parameters needed to call the filter api in the file "Task3-HQPlusRest.postman_collection.json".
+There's a postman collection with the parameters needed to call the filter api in the file [Task3-HQPlusRest.postman_collection.json](./Task3-HQPlusRest.postman_collection.json).
 
 What is missing in the API is an authentication/authorization to secure the access to it.
 
