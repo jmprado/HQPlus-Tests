@@ -6,7 +6,7 @@
 
 ### Option 1 - Hangfire Cron Job
 -------------------------------------------------------------------------------------------------------
-Step 1 - Use Hangfire (https://www.hangfire.io/) as with crontab to verify existence of reports in folder.
+Step 1 - Use Hangfire (https://www.hangfire.io/) with crontab to verify existence of reports in folder.
 Step 2 - There's plenty of nuget packages for send mail, use the one who best fit the HQ Plus team to prepare, attach the report and send mail.
 
 Hangfire has some features that could do a great job on this like requeue failed tasks and a control dashboard.
